@@ -183,7 +183,38 @@ function getHallId(){
       }
       }
       function makePayment() {
+         $("#booking").show();
+      }
+
+      function confirm(){
         window.location.replace("jsdyanamic.php");
       }
 </script>
+
+
+ <div class="modal" tabindex="-1" role="dialog" id="booking">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Your Booking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class=" text-center mb-4">
+        <button type="button" class="btn btn-primary" style="margin-top:20px;" onclick="confirm();">Confirm</button> <br> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!--Toastr (Notification Library) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+  />
+
 </html>

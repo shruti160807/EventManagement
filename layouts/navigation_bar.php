@@ -19,7 +19,7 @@
             function contactNowClicked(){
             window.location.href="ContactPage.php?id="+this.id;
             }
-            </script>
+              </script>
             <?php 
                 session_start(); 
               if(isset($_SESSION['login']) && $_SESSION['login']==true){
@@ -51,28 +51,25 @@
             Username
           </div>
         <div class="col">
-          <input type="text" class="form-control" id="username">
+          <input type="text" class="form-control" id="username" oninput="console.log('Username input: ' + this.value)">
         </div>
       </div>
       <div class="row mt-4"><div class="col">
             Password
           </div>
         <div class="col">
-          <input type="password" class="form-control" id="password">
+          <input type="password" class="form-control" id="password" oninput="console.log('Password input: ' + this.value)">
         </div>
       </div>
-
-
-        </div>
+      </div>
       </div>
       <div class=" text-center mb-4">
-        <button type="button" class="btn btn-primary" onclick="login();">Login</button> <br> 
+        <button type="button" class="btn btn-primary"  onclick="login(); console.log('Login button clicked')">Login</button> <br>
         <span > Don't have Account? <a href="singUp.php"> Sign Up</a> </span>
       </div>
     </div>
   </div>
 </div>
-
 
 
   <!--Toastr (Notification Library) -->
