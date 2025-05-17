@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="styles (1).css">
+</head>
+<body id="BodyLoad" onLoad="mainBody();">
+    <div class="w3-top w3-hide-small">
+    <div class="container-fluid ">
+        <div class="row " 
+        style="background-color:beige; height: 50px; 
+        position: sticky;
+        top: 0;
+        z-index: 1;">
+            <div class="col-1" style="margin-top: 10px;">
+              <h4 style="font-family:Amatic SC ;" id="home" onclick="contactNowClicked(this.id);">HOME</h4>
+            </div>
+            <div class="col-1" style="margin-top: 10px;">
+              <h4 style="font-family:Amatic SC ;" id="about"onclick="contactNowClicked(this.id);">MENU</h4></div>
+           
+            <div class="col-1" style="margin-top: 10px;">
+              <h4 style="font-family:Amatic SC ;" id="about"onclick="contactNowClicked(this.id);">ABOUT</h4></div>
+            <div class="col-3" style="margin-top: 10px;">
+              <h4 style="font-family:Amatic SC ;" id="contact"onclick="contactNowClicked(this.id);">CONTACT US</h4></div>
+              <div class="col" style="margin-top: 10px;">
+              <button class="btn btn-outline-danger" style="margin-left: 90%;">Login</button></div>
+        </div>
+        </div>
+    </div>
+</body>
+<script>
+    var hallid; 
+    function changeImage() {
+      mainImage.src = this.src;
+    }
+    function bookNow() {
+      window.location.href = "bookingdynamic.html?hallid=" + hallid;
+    }
+
+    function mainBody() {
+      const queryString = window.location.search; 
+      const urlParams = new URLSearchParams(queryString); 
+      var hallid = urlParams.get("hallid"); 
+      console.log(hallid);
+      createDynamicUI();
+    }
+
+    function createDynamicUI() {
+      var amiIconsArr = [
+        "cityview.png",
+        "dine in.jpg",
+       "voucher.png",
+        "delivery.jpg"
+        
+      ];
+      var amiDescArr = [
+        "CityView",
+        "DineInn",
+        "Voucher<br>Accepted",
+        "Delivery"
+    
+      ];
+
+      var subImgArr = [
+        "brewers.jpg",
+        "brewers1.jpg",
+        "brewers2.jpg",
+        "brewers3.jpg"
+      ];
+ 
+      var ratingArr =[
+            "⭐(1.0)",
+            "⭐⭐(2.0)",
+            "⭐⭐⭐(3.0)",
+            "⭐⭐⭐⭐(4.0)",
+            "⭐⭐⭐⭐⭐(5.0)"
+      ];
+
+      var usernameArr = [ "Shruti", "Ajay"];
+      var reviewArr=[
+        "Very nice place for hangout.",
+        "Soothing atmosphere and nice cafe."
+      ];
+
+    
+
+    var containerDiv = document.createElement("div");
+      containerDiv.classList.add("container-fluid");
+      var rowDiv = document.createElement("div");
+      rowDiv.classList.add("row");
+      //Image Coloumn
+      var imgCol = document.createElement("div");
+      imgCol.classList.add("col-6");
+      imgCol.style.textAlign = "center";
+      var mainImage = document.createElement("img");
+      mainImage.src = "brewers.jpg";
+      mainImage.style.width = "500px";
+      mainImage.style.height = "400px";
+      mainImage.style.marginTop = "20px";
+      mainImage.id = "mainImage";
+      imgCol.appendChild(mainImage);
+
+
+      //small image
+      var smallImageDiv = document.createElement("div");
+      smallImageDiv.classList.add("flex-container");
+
+      for (var i = 0; i < subImgArr.length; i++) {
+        var smallImage = document.createElement("div");
+        smallImage.classList.add("flex-items");
+        smallImage.style.marginLeft = "35px";
+        var smallImage1 = document.createElement("img");
+        smallImage1.src =  subImgArr[i];
+        smallImage1.classList.add("img-small-image");
+        smallImage1.addEventListener("click", changeImage);
+        smallImage.appendChild(smallImage1);
+        smallImageDiv.appendChild(smallImage);
+      }
+
+      imgCol.appendChild(smallImageDiv);
+      rowDiv.appendChild(imgCol);
+
+      //Description column
+
+      var descCol = document.createElement("div");
+      descCol.classList.add("col-6");
+      var headingFlex = document.createElement("div");
+      headingFlex.classList.add("flex-container");
+      var head1 = document.createElement("div");
+      head1.classList.add("flex-items");
+      var hallName = document.createElement("h2");
+      hallName.innerHTML = "Brewers The Coffee Bar";
+      var hallAddress = document.createElement("p");
+      hallAddress.style="text-align:left; font-size:20px";
+      hallAddress.innerHTML = "Sai nagar, Amravati";
+      head1.appendChild(hallName);
+      head1.appendChild(hallAddress);
+      headingFlex.appendChild(head1);
+
+      var head2 = document.createElement("div");
+      head2.classList.add("flex-items");
+      var bookNowButton = document.createElement("button");
+      bookNowButton.innerHTML = "Book Now";
+      bookNowButton.classList.add("btn");
+      bookNowButton.classList.add("btn-success");
+      bookNowButton.addEventListener("click", bookNow);
+      head2.style.marginLeft = "200px";
+      head2.appendChild(bookNowButton);
+      headingFlex.appendChild(head2);
+      descCol.appendChild(headingFlex);
+
+
+      //Aminities Div
+      var aminityDiv = document.createElement("div");
+      var aminityPara = document.createElement("p");
+      aminityPara.style =
+        "font-weight: bold; color: red; font-size: 20px; margin-top:25px";
+      aminityPara.innerHTML = "Aminities";
+      aminityDiv.appendChild(aminityPara);
+      descCol.appendChild(aminityDiv);
+      var aminityIconDiv = document.createElement("div");
+      aminityIconDiv.classList.add("flex-container");
+      aminityIconDiv.style.flexWrap = "wrap";
+      for (var i = 0; i < amiIconsArr.length; i++) {
+        aminityIconDiv.id = "amiIcons";
+        var aminityIconItem = document.createElement("div");
+        aminityIconItem.classList.add("flex-items");
+        aminityIconItem.style="margin-top:20px ";
+        var amiIcon = document.createElement("img");
+        amiIcon.src =  amiIconsArr[i];
+        amiIcon.classList.add("img-icon");
+        var amiDesc = document.createElement("p");
+        amiDesc.classList.add("aminities");
+        amiDesc.innerHTML = amiDescArr[i];
+        aminityIconItem.appendChild(amiIcon);
+        aminityIconItem.appendChild(amiDesc);
+        aminityIconDiv.appendChild(aminityIconItem);
+      }
+       descCol.appendChild(aminityIconDiv);
+
+       var ratingMaindiv=document.createElement("div");
+       ratingMaindiv.classList.add("flex-container");
+       var ratingdiv=document.createElement("p");
+      ratingdiv.innerHTML="Ratings :";
+      ratingdiv.classList.add("flex-items");
+      ratingdiv.style="color:red; font-weight: bold; font-size: 20px";
+     
+      var ratingstar=document.createElement("div");
+      ratingstar.classList.add("flex-items");
+      ratingstar.style.flexWrap = "wrap";
+      for (var i = 0; i <3; i++){
+      ratingstar.innerHTML=ratingArr[i];
+      ratingMaindiv.appendChild(ratingdiv);
+      ratingMaindiv.appendChild(ratingstar);
+    
+      descCol.appendChild(ratingMaindiv);
+      }
+      var userMainDiv=document.createElement("div");
+      var userReview=document.createElement("p");
+      userReview.style="color:red; font-weight: bold; font-size: 20px";
+      userReview.innerHTML="User's Review : ";
+      userMainDiv.appendChild(userReview);
+      descCol.appendChild(userMainDiv);
+
+
+      var mainReviewDiv=document.createElement("div");
+      mainReviewDiv.classList.add("flex-container");
+      for (var i = 0; i <2; i++){
+      var imgDiv=document.createElement("div");
+      imgDiv.classList.add("flex-items");
+      var usericon=document.createElement("img");
+      usericon.style="margin-top:-15px";
+      usericon.src="user.png";
+      usericon.classList.add("img-icon");
+      var textdiv=document.createElement("div");
+      textdiv.style.width = "80%";
+      textdiv.classList.add("flex-items");
+      var mainuserdiv=document.createElement("p");
+      mainuserdiv.style.texAtlign ="left";
+      var username="<span class='reviewClass'>" + usernameArr[i] + "</span> <br>";
+      var review=reviewArr[i];
+      mainuserdiv.innerHTML=username + review;
+      imgDiv.appendChild(usericon);
+      mainReviewDiv.appendChild(imgDiv);
+      textdiv.appendChild(mainuserdiv);
+      mainReviewDiv.appendChild(textdiv);
+
+    }
+      descCol.appendChild(mainReviewDiv);
+      rowDiv.appendChild(descCol);
+      containerDiv.appendChild(rowDiv);
+      BodyLoad.appendChild(containerDiv);
+    }
+</script>
+</html>
