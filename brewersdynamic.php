@@ -198,7 +198,7 @@ $( document ).ready(function() {
       textdiv.style.width = "80%";
       textdiv.classList.add("flex-items");
       var mainuserdiv=document.createElement("p");
-      mainuserdiv.style=" margin-top:-120px; margin-left:-100px;";
+      mainuserdiv.style=" margin-top:-120px; margin-left:100px;";
       var username="<span class='reviewClass'>" + usernameArr[i] + "</span> <br>";
       var review=reviewArr[i];
       
